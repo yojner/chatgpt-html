@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
@@ -2263,8 +2263,8 @@
                 </div>
                 <div class="divider"></div>
                 <div class="links">
-                    <a href="https://github.com/xqdoo00o/chatgpt-web" target="_blank"
-                        rel="noopener noreferrer">Github</a>
+                    <a href="https://ko-fi.com/renjvip" target="_blank"
+                        rel="noopener noreferrer">❤️ Buy us coffee!</a>
                 </div>
             </div>
         </nav>
@@ -2301,11 +2301,21 @@
                         <div class="presetSelect presetModelCls">
                             <label for="preSetModel" data-i18n-key="gptModel"></label>
                             <select id="preSetModel">
-                                <option value="gpt-3.5-turbo">GPT-3.5</option>
-                                <option value="gpt-3.5-turbo-16k">GPT-3.5-16K</option>
-                                <option value="gpt-4">GPT-4</option>
-                                <option value="gpt-4-browsing" data-i18n-key="gptBrowsing"></option>
-                                <option value="gpt-4-32k">GPT-4-32k</option>
+                                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                                <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
+                                <option value="gpt-3.5-turbo-16k-0613">gpt-3.5-turbo-16k-0613</option>
+                                <option value="gpt-3.5-turbo-16k-poe">gpt-3.5-turbo-16k-poe</option>
+                                <option value="gpt-4">gpt-4</option>
+                                <option value="gpt-4-0613">gpt-4-0613</option>
+                                <option value="gpt-4-32k">gpt-4-32k</option>
+                                <option value="gpt-4-poe">gpt-4-poe</option>
+                                <option value="gpt-4-0613-poe">gpt-4-0613-poe</option>
+                                <option value="sage">sage</option>
+                                <option value="claude-instant">claude-instant</option>
+                                <option value="claude-2-100k">claude-2-100k</option>
+                                <option value="claude-instant-100k">claude-instant-100k</option>
+                                <option value="bard">bard</option>
+                                <option value="chat-bison-001">googlepalm-2</option>
                             </select>
                         </div>
                         <div>
@@ -2915,10 +2925,10 @@
                 "chat": "Chat",
                 "tts": "TTS",
                 "stt": "STT",
-                "gptModel": "GPT model",
+                "gptModel": "GPT Model",
                 "gptBrowsing": "GPT-4-browsing",
                 "avatar": "Avatar",
-                "systemRole": "System role",
+                "systemRole": "System Role",
                 "presetRole": "Preset",
                 "default": "Default",
                 "assistant": "Assistant",
@@ -2938,7 +2948,7 @@
                 "qualityPos": "Nonsense",
                 "chatsWidth": "Chats width",
                 "typeSpeed": "Typing speed",
-                "continuousLen": "Continuous context",
+                "continuousLen": "Message History",
                 "msgAbbr": " msgs.",
                 "slow": "Slow",
                 "fast": "Fast",
@@ -2982,7 +2992,7 @@
                 "askTip": "Type message here",
                 "clearChat": "Clear chat",
                 "general": "General",
-                "hotkey": "Hotkey",
+                "hotkey": "Hotkeys",
                 "data": "Data",
                 "theme": "Theme",
                 "darkTheme": "Dark",
@@ -2992,7 +3002,7 @@
                 "customDarkTheme": "Custom dark theme",
                 "startDark": "Start",
                 "endDark": "End",
-                "aiEndpoint": "OpenAI endpoint",
+                "aiEndpoint": "OpenAI Endpoint",
                 "aiKey": "OpenAI API key",
                 "checkBill": "Check bill",
                 "used": "Used ",
@@ -3017,7 +3027,7 @@
                 "azureInvalidTip": "Access is denied due to invalid access key or API endpoint!",
                 "thisQuota": "This month's quota",
                 "freeTierTip": "Free tier - valid until: ",
-                "errorAiKeyTip": "Invalid or incorrect API key, please check API key!",
+                "errorAiKeyTip": "Invalid API key!",
                 "copyCode": "Copy code",
                 "copySuccess": "Success",
                 "update": "Update",
@@ -3044,10 +3054,10 @@
                 "customDarkTip": "Start time and end time cannot be the same!",
                 "timeoutTip": "Request timeout, please try again later!",
                 "largeReqTip": "Request is too large, please delete part of the chat or cancel continuous chat!",
-                "noModelPerTip": "Not permission to use this model, please choose another GPT model!",
+                "noModelPerTip": "Unsupported model! Choose another.",
                 "apiRateTip": "Trigger API call rate limit, please try again later!",
                 "exceedLimitTip": "API usage exceeded limit, please check your bill!",
-                "badGateTip": "Gateway error or timeout, please try again later!",
+                "badGateTip": "Endpoint error!",
                 "badEndpointTip": "Failed to access the endpoint, please check the endpoint!",
                 "clearChatTip": "Clear this chat?",
                 "cantSpeechTip": "Current voice cannot synthesize this message, please choose another voice or message!",
@@ -3462,7 +3472,7 @@
                 };
                 let localLangIdx = 0;
                 let localDiaIdx = 0;
-                let localRecLang = localStorage.getItem("voiceRecLang") || "cmn-Hans-CN";
+                let localRecLang = localStorage.getItem("voiceRecLang") || "en-US";
                 if (localRecLang) {
                     let localIndex = langs.findIndex(item => {
                         let diaIdx = item.findIndex(lang => {return lang instanceof Array && lang[0] === localRecLang});
@@ -5519,7 +5529,7 @@
         const initSetting = () => {
             const modelEle = document.getElementById("preSetModel");
             let localModel = localStorage.getItem("modelVersion");
-            modelVersion = modelEle.value = localModel || "gpt-3.5-turbo";
+            modelVersion = modelEle.value = localModel || "gpt-3.5-turbo-16k";
             modelEle.onchange = () => {
                 modelVersion = modelEle.value;
                 localStorage.setItem("modelVersion", modelVersion);
